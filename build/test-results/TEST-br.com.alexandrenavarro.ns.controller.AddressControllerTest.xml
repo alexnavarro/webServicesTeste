@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="br.com.alexandrenavarro.ns.controller.AddressControllerTest" tests="3" skipped="0" failures="3" errors="0" timestamp="2015-05-11T20:32:56" hostname="notepayubredu.grupo-buscape.com.br" time="0.121">
+<testsuite name="br.com.alexandrenavarro.ns.controller.AddressControllerTest" tests="3" skipped="0" failures="3" errors="0" timestamp="2015-05-11T20:58:55" hostname="notepayubredu.grupo-buscape.com.br" time="0.177">
   <properties/>
-  <testcase name="quandoCepForInvalidoDeveRetornarMensagemInformando" classname="br.com.alexandrenavarro.ns.controller.AddressControllerTest" time="0.116">
-    <failure message="java.lang.AssertionError: expected:&lt;CEP invalido&gt; but was:&lt;br.com.alexandrenavarro.ns.controller.AddressController$Result@16c048fa&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;CEP invalido&gt; but was:&lt;br.com.alexandrenavarro.ns.controller.AddressController$Result@16c048fa&gt;
+  <testcase name="quandoCepForInvalidoDeveRetornarMensagemInformando" classname="br.com.alexandrenavarro.ns.controller.AddressControllerTest" time="0.172">
+    <failure message="java.lang.AssertionError: expected:&lt;CEP invalido&gt; but was:&lt;br.com.alexandrenavarro.ns.controller.AddressController$Result@23bf80d5&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;CEP invalido&gt; but was:&lt;br.com.alexandrenavarro.ns.controller.AddressController$Result@23bf80d5&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:118)
@@ -53,8 +53,8 @@
 	at java.lang.Thread.run(Thread.java:745)
 </failure>
   </testcase>
-  <testcase name="quandoCepForPertencenteAoRangeDeCepMasForEnderecoInesistenteDeveRealizarOutraConsultaColocandoZeroNoFinal" classname="br.com.alexandrenavarro.ns.controller.AddressControllerTest" time="0.004">
-    <failure message="java.lang.AssertionError: expected:&lt;Av Luis Carlos Berrini, 287 Brooklin - São Paulo 22333-000&gt; but was:&lt;br.com.alexandrenavarro.ns.controller.AddressController$Result@956f68e&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;Av Luis Carlos Berrini, 287 Brooklin - São Paulo 22333-000&gt; but was:&lt;br.com.alexandrenavarro.ns.controller.AddressController$Result@956f68e&gt;
+  <testcase name="quandoCepForPertencenteAoRangeDeCepMasForEnderecoInesistenteDeveRealizarOutraConsultaColocandoZeroNoFinal" classname="br.com.alexandrenavarro.ns.controller.AddressControllerTest" time="0.003">
+    <failure message="java.lang.AssertionError: expected:&lt;Av Luis Carlos Berrini, 287 Brooklin - São Paulo 22333-000&gt; but was:&lt;br.com.alexandrenavarro.ns.controller.AddressController$Result@50e251bd&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;Av Luis Carlos Berrini, 287 Brooklin - São Paulo 22333-000&gt; but was:&lt;br.com.alexandrenavarro.ns.controller.AddressController$Result@50e251bd&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:118)
@@ -106,7 +106,7 @@
 </failure>
   </testcase>
   <testcase name="quandoCepForValidoDeveRetornarEndereco" classname="br.com.alexandrenavarro.ns.controller.AddressControllerTest" time="0.001">
-    <failure message="java.lang.AssertionError: expected:&lt;Av Paulista, 287 Bela Vista - São Paulo 01311-000&gt; but was:&lt;br.com.alexandrenavarro.ns.controller.AddressController$Result@197ba980&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;Av Paulista, 287 Bela Vista - São Paulo 01311-000&gt; but was:&lt;br.com.alexandrenavarro.ns.controller.AddressController$Result@197ba980&gt;
+    <failure message="java.lang.AssertionError: expected:&lt;Av Paulista, 287 Bela Vista - São Paulo 01311-000&gt; but was:&lt;br.com.alexandrenavarro.ns.controller.AddressController$Result@b13bff3&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;Av Paulista, 287 Bela Vista - São Paulo 01311-000&gt; but was:&lt;br.com.alexandrenavarro.ns.controller.AddressController$Result@b13bff3&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:118)
