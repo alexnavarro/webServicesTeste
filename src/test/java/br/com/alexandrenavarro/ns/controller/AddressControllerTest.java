@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import br.com.alexandrenavarro.ns.controller.AddressController.Result;
+import br.com.alexandrenavarro.ns.controller.ZipCodeController.Result;
 import br.com.alexandrenavarro.ns.dao.AddressDAO;
 
 public class AddressControllerTest {
@@ -30,16 +30,16 @@ public class AddressControllerTest {
 	
 	@Test
 	public void quandoCepForInvalidoDeveRetornarMensagemInformando(){
-		AddressController controller = new AddressController(dao);
-		Mockito.when(dao.findAddressByCep(INVALID_ZIPCODE)).thenReturn(INVALID_ADDRESS);		
+		ZipCodeController controller = new ZipCodeController(dao);
+		//Mockito.when(dao.findAddressByCep(INVALID_ZIPCODE)).thenReturn(INVALID_ADDRESS);		
 		Assert.assertEquals(INVALID_ADDRESS, controller.findAddress(INVALID_ZIPCODE).getResult());		
 		Mockito.verify(dao).findAddressByCep(INVALID_ZIPCODE);
 	}
 	
 	@Test
 	public void quandoCepForValidoDeveRetornarEndereco(){
-		AddressController controller = new AddressController(dao);
-		Mockito.when(dao.findAddressByCep(VALID_ZIPCODE)).thenReturn(VALID_ADDRESS);
+		ZipCodeController controller = new ZipCodeController(dao);
+		//Mockito.when(dao.findAddressByCep(VALID_ZIPCODE)).thenReturn(VALID_ADDRESS);
 		Result findAddress = controller.findAddress(VALID_ZIPCODE);
 		Assert.assertEquals(VALID_ADDRESS, findAddress.getResult());	
 		Mockito.verify(dao).findAddressByCep(VALID_ZIPCODE);
@@ -47,8 +47,8 @@ public class AddressControllerTest {
 	
 	@Test
 	public void quandoCepForPertencenteAoRangeDeCepMasForEnderecoInesistenteDeveRealizarOutraConsultaColocandoZeroNoFinal(){
-		AddressController controller = new AddressController(dao);
-		Mockito.when(dao.findAddressByCep(Mockito.anyString())).thenReturn("" , VALID_ADDRESS_FOUND);
+		ZipCodeController controller = new ZipCodeController(dao);
+		//Mockito.when(dao.findAddressByCep(Mockito.anyString())).thenReturn("" , VALID_ADDRESS_FOUND);
 		Assert.assertEquals(VALID_ADDRESS_FOUND, controller.findAddress(NOT_EXISTENT_VALID_ZIPCODE).getResult());
 		
 	}
