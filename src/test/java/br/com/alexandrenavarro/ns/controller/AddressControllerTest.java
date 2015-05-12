@@ -7,7 +7,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import br.com.alexandrenavarro.ns.controller.ZipCodeController.Result;
 import br.com.alexandrenavarro.ns.dao.AddressDAO;
 
 public class AddressControllerTest {
@@ -30,26 +29,25 @@ public class AddressControllerTest {
 	
 	@Test
 	public void quandoCepForInvalidoDeveRetornarMensagemInformando(){
-		ZipCodeController controller = new ZipCodeController(dao);
+		AddressController controller = new AddressController(dao);
 		//Mockito.when(dao.findAddressByCep(INVALID_ZIPCODE)).thenReturn(INVALID_ADDRESS);		
-		Assert.assertEquals(INVALID_ADDRESS, controller.findAddress(INVALID_ZIPCODE).getResult());		
+		Assert.assertEquals(INVALID_ADDRESS, controller.findAddressByCep(INVALID_ZIPCODE).getBody());		
 		Mockito.verify(dao).findAddressByCep(INVALID_ZIPCODE);
 	}
 	
 	@Test
 	public void quandoCepForValidoDeveRetornarEndereco(){
-		ZipCodeController controller = new ZipCodeController(dao);
+		AddressController controller = new AddressController(dao);
 		//Mockito.when(dao.findAddressByCep(VALID_ZIPCODE)).thenReturn(VALID_ADDRESS);
-		Result findAddress = controller.findAddress(VALID_ZIPCODE);
-		Assert.assertEquals(VALID_ADDRESS, findAddress.getResult());	
+		Assert.assertEquals(VALID_ADDRESS, controller.findAddressByCep(VALID_ZIPCODE).getBody());	
 		Mockito.verify(dao).findAddressByCep(VALID_ZIPCODE);
 	}
 	
 	@Test
 	public void quandoCepForPertencenteAoRangeDeCepMasForEnderecoInesistenteDeveRealizarOutraConsultaColocandoZeroNoFinal(){
-		ZipCodeController controller = new ZipCodeController(dao);
+		AddressController controller = new AddressController(dao);
 		//Mockito.when(dao.findAddressByCep(Mockito.anyString())).thenReturn("" , VALID_ADDRESS_FOUND);
-		Assert.assertEquals(VALID_ADDRESS_FOUND, controller.findAddress(NOT_EXISTENT_VALID_ZIPCODE).getResult());
+		Assert.assertEquals(VALID_ADDRESS_FOUND, controller.findAddressByCep(NOT_EXISTENT_VALID_ZIPCODE).getBody());
 		
 	}
 
