@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import br.com.alexandrenavarro.ns.controller.AddressController.Result;
 import br.com.alexandrenavarro.ns.dao.AddressDAO;
 
 public class AddressControllerTest {
@@ -30,10 +31,8 @@ public class AddressControllerTest {
 	@Test
 	public void quandoCepForInvalidoDeveRetornarMensagemInformando(){
 		AddressController controller = new AddressController(dao);
-		Mockito.when(dao.findAddressByCep(INVALID_ZIPCODE)).thenReturn(INVALID_ADDRESS);
-		
-		Assert.assertEquals(INVALID_ADDRESS, controller.findAddress(INVALID_ZIPCODE));
-		
+		Mockito.when(dao.findAddressByCep(INVALID_ZIPCODE)).thenReturn(INVALID_ADDRESS);		
+		Assert.assertEquals(INVALID_ADDRESS, controller.findAddress(INVALID_ZIPCODE).getResult());		
 		Mockito.verify(dao).findAddressByCep(INVALID_ZIPCODE);
 	}
 	
@@ -41,23 +40,16 @@ public class AddressControllerTest {
 	public void quandoCepForValidoDeveRetornarEndereco(){
 		AddressController controller = new AddressController(dao);
 		Mockito.when(dao.findAddressByCep(VALID_ZIPCODE)).thenReturn(VALID_ADDRESS);
-		
-		Assert.assertEquals(VALID_ADDRESS, controller.findAddress(VALID_ZIPCODE));
-		
+		Result findAddress = controller.findAddress(VALID_ZIPCODE);
+		Assert.assertEquals(VALID_ADDRESS, findAddress.getResult());	
 		Mockito.verify(dao).findAddressByCep(VALID_ZIPCODE);
 	}
 	
 	@Test
 	public void quandoCepForPertencenteAoRangeDeCepMasForEnderecoInesistenteDeveRealizarOutraConsultaColocandoZeroNoFinal(){
 		AddressController controller = new AddressController(dao);
-		
 		Mockito.when(dao.findAddressByCep(Mockito.anyString())).thenReturn("" , VALID_ADDRESS_FOUND);
-//		Mockito.when(dao.findAddressByCep("22333990")).thenReturn("");
-//		Mockito.when(dao.findAddressByCep("22333900")).thenReturn("");
-//		Mockito.when(dao.findAddressByCep("22333000")).thenReturn(VALID_ADDRESS_FOUND);
-
-		
-		Assert.assertEquals(VALID_ADDRESS_FOUND, controller.findAddress(NOT_EXISTENT_VALID_ZIPCODE));
+		Assert.assertEquals(VALID_ADDRESS_FOUND, controller.findAddress(NOT_EXISTENT_VALID_ZIPCODE).getResult());
 		
 	}
 

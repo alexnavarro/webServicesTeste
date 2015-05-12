@@ -1,17 +1,14 @@
 package br.com.alexandrenavarro.ns.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.alexandrenavarro.ns.dao.AddressDAO;
 
 @RestController
-@RequestMapping("/rest")
+@RequestMapping("/findAddress")
 public class AddressController {
 
 	private AddressDAO dao;
@@ -21,7 +18,7 @@ public class AddressController {
 		this.dao = dao;
 	}
 
-	@RequestMapping(value ="/findAddress/{zipCode}")
+	@RequestMapping(value ="/{zipCode}")
 	public Result findAddress(@PathVariable String zipCode) {
 		String adddress = dao.findAddressByCep(zipCode);
 
@@ -39,7 +36,7 @@ public class AddressController {
 
 				zipCodeChanged = newZipCode;
 				String zip = dao.findAddressByCep(newZipCode);
-				if (!adddress.isEmpty()) {
+				if (!zip.isEmpty()) {
 					return new Result(zip);
 				}
 			}
@@ -53,6 +50,10 @@ public class AddressController {
 
 		public Result(String result) {
 			this.result = result;
+		}
+		
+		public String getResult() {
+			return result;
 		}
 
 	}
