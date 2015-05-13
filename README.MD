@@ -1,8 +1,7 @@
 Projeto web utilizando Spring mvc
 
-O gerenciador de dependencias utilzado é o gradle.
+O gerenciador de dependencias utilzado é o gradle, segue os passos para importação no eclipse.
 
-Importação no Eclipse
-
-instale o gradle e execute o comando gradle cleanEclipse eclipse e depois é 
-só importar no eclipse e executar no tomcat.
+Primeiro instale o gradle.
+Segundo execute o comando "gradle cleanEclipse eclipse"
+Agora é só importar o projeto no eclipse e executar no tomcat.
