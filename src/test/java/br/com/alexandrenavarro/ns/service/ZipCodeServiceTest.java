@@ -1,5 +1,7 @@
 package br.com.alexandrenavarro.ns.service;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -21,14 +23,15 @@ public class ZipCodeServiceTest {
 	@Test
 	public void quandoCepForValidoDeveRetornarEndereco() {
 		ZipCodeService service = new ZipCodeService();
-		Assert.assertEquals(VALID_ZIPCODE,
-				service.findAddressByCep(VALID_ZIPCODE).getZipCode());
+		assertEquals(VALID_ZIPCODE, service.findAddressByCep(VALID_ZIPCODE)
+				.getZipCode());
 	}
 
 	@Test
 	public void quandoCepForPertencenteAoRangeDeCepMasForEnderecoInesistenteDeveRealizarOutraConsultaColocandoZeroNoFinal() {
 		ZipCodeService service = new ZipCodeService();
-		Assert.assertEquals(VALID_ZIPCODE_FOUND,
-				service.findAddressByCep(NOT_EXISTENT_VALID_ZIPCODE).getZipCode());
+		assertEquals(VALID_ZIPCODE_FOUND,
+				service.findAddressByCep(NOT_EXISTENT_VALID_ZIPCODE)
+						.getZipCode());
 	}
 }
