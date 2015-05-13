@@ -12,26 +12,29 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.alexandrenavarro.ns.dao.AddressDAO;
 import br.com.alexandrenavarro.ns.model.Address;
 import br.com.alexandrenavarro.ns.model.DefaultError;
+import br.com.alexandrenavarro.ns.service.ZipCodeService;
 
 @RestController
 @RequestMapping("/address")
 public class AddressController {
 
 	private AddressDAO dao;
+	private ZipCodeService zipCodeService;
 
 	@Autowired
-	public AddressController(AddressDAO dao) {
+	public AddressController(AddressDAO dao, ZipCodeService zipCodeService) {
 		this.dao = dao;
+		this.zipCodeService = zipCodeService;
 	}
 
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public ResponseEntity<?> findAddress(@RequestBody Address address) {
-		if (dao.findAddressByCep(address.getZipCode()) == null) {
-			return defaultError("CEP invalido");
-		}
-
+	public ResponseEntity<?> insert(@RequestBody Address address) {
 		if (!AddressValidator.validate(address)) {
 			return defaultError("Os campos Rua, Numero, Cep, Cidade e Estado são obrigatórios!");
+		}
+		
+		if (zipCodeService.findAddressByCep(address.getZipCode()) == null) {
+			return defaultError("CEP invalido");
 		}
 
 		return new ResponseEntity<Address>(dao.insert(address),
@@ -40,7 +43,7 @@ public class AddressController {
 
 	@RequestMapping(value = "/findByCep/{cep}", method = RequestMethod.GET)
 	public ResponseEntity<?> findAddressByCep(@PathVariable String cep) {
-		Address address = dao.findAddressByCep(cep);
+		Address address = zipCodeService.findAddressByCep(cep);
 
 		if (address == null) {
 			return defaultError("CEP invalido");
@@ -64,12 +67,12 @@ public class AddressController {
 
 	@RequestMapping(value = "/update", method = RequestMethod.PUT)
 	public ResponseEntity<?> update(@RequestBody Address address) {
-		if (dao.findAddressByCep(address.getZipCode()) == null) {
-			return defaultError("CEP invalido");
-		}
-
 		if (!AddressValidator.validate(address)) {
 			return defaultError("Os campos Rua, Numero, Cep, Cidade e Estado são obrigatórios!");
+		}
+		
+		if (zipCodeService.findAddressByCep(address.getZipCode()) == null) {
+			return defaultError("CEP invalido");
 		}
 
 		if (!dao.update(address))

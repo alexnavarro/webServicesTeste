@@ -1,6 +1,9 @@
 package br.com.alexandrenavarro.ns.model;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable{
+	
 	private int id;
 	private String zipCode;
 	private String street;

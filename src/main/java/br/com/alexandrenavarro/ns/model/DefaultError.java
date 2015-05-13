@@ -1,6 +1,8 @@
 package br.com.alexandrenavarro.ns.model;
 
-public class DefaultError {
+import java.io.Serializable;
+
+public class DefaultError implements Serializable{
 
 	private String message;
 
