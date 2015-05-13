@@ -5,7 +5,7 @@ import java.util.List;
 
 public class StringFirstChar {
 
-	public char firstChar(Stream input) {
+	public static char firstChar(Stream input) {
 		List<Character> character = new ArrayList<Character>();
 		List<Character> repeatedChar = new ArrayList<Character>();
 

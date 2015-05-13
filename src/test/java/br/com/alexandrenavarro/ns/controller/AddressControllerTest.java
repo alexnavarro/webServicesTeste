@@ -5,12 +5,10 @@ import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.eq;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import br.com.alexandrenavarro.ns.dao.AddressDAO;
@@ -48,11 +46,22 @@ public class AddressControllerTest {
 	
 	@Test
 	public void deveRetornarAddressQuandoEnderecoForCadastrado() {
-		Address address = Mockito.mock(Address.class, Mockito.RETURNS_DEEP_STUBS);		
-		when(service.findAddressByCep(anyString())).thenReturn(any(Address.class));
-		controller.insert(eq(address));	
-		verify(dao).insert(any(Address.class));
+		Address address = createAddress();		
+		when(service.findAddressByCep(anyString())).thenReturn(address);
+		controller.insert(address);	
+		verify(dao).insert(address);
 		verify(service).findAddressByCep(anyString());
+	}
+	
+	private Address createAddress(){
+		Address value = new Address();
+		value.setCity("São Paulo");
+		value.setNeighborhood("Liberdade");
+		value.setNumber("544");
+		value.setState("SP");
+		value.setStreet("Rua São Joaquim");
+		value.setZipCode("01508000");
+		return value;
 	}
 
 }

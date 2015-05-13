@@ -14,18 +14,14 @@ public class ZipCodeService {
 		Address value = new Address();
 		if ("01508000".equals(zipCode.trim())) {
 			value.setCity("São Paulo");
-			value.setComplement("");
 			value.setNeighborhood("Liberdade");
-			value.setNumber("");
 			value.setState("SP");
 			value.setStreet("Rua São Joaquim");
 			value.setZipCode("01508000");
 			return value;
 		} else if ("01311000".equals(zipCode.trim())) {
 			value.setCity("São Paulo");
-			value.setComplement("");
 			value.setNeighborhood("Bela Vista");
-			value.setNumber("");
 			value.setState("SP");
 			value.setStreet("Av Paulista");
 			value.setZipCode("01311000");
@@ -36,9 +32,7 @@ public class ZipCodeService {
 			return findAddressByCep(createNewZipCode(zipCode));
 		} else if ("22333000".equals(zipCode.trim())) {
 			value.setCity("São Paulo");
-			value.setComplement("");
 			value.setNeighborhood("Brooklin");
-			value.setNumber("332");
 			value.setState("SP");
 			value.setStreet("Av Luis Carlos Berrini");
 			value.setZipCode("22333000");
