@@ -1,4 +1,4 @@
-package br.com.alexandrenavarro.ns;
+package br.com.alexandrenavarro.ns.exercise3;
 
 import java.util.ArrayList;
 import java.util.List;

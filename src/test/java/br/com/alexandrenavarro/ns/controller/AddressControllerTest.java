@@ -10,8 +10,9 @@ import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.ResponseEntity;
 
 import br.com.alexandrenavarro.ns.dao.AddressDAO;
@@ -19,6 +20,7 @@ import br.com.alexandrenavarro.ns.model.Address;
 import br.com.alexandrenavarro.ns.model.DefaultError;
 import br.com.alexandrenavarro.ns.service.ZipCodeService;
 
+@RunWith(MockitoJUnitRunner.class)
 public class AddressControllerTest {
 	
 	@Mock
@@ -30,7 +32,6 @@ public class AddressControllerTest {
 	
 	@Before
 	public void setup(){
-		MockitoAnnotations.initMocks(this);
 		controller = new AddressController(dao, service);
 	}
 	

@@ -1,4 +1,4 @@
-package br.com.alexandrenavarro.ns.controller;
+package br.com.alexandrenavarro.ns.validator;
 
 import br.com.alexandrenavarro.ns.model.Address;
 

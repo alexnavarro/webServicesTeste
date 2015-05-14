@@ -13,6 +13,7 @@ import br.com.alexandrenavarro.ns.dao.AddressDAO;
 import br.com.alexandrenavarro.ns.model.Address;
 import br.com.alexandrenavarro.ns.model.DefaultError;
 import br.com.alexandrenavarro.ns.service.ZipCodeService;
+import br.com.alexandrenavarro.ns.validator.AddressValidator;
 
 @RestController
 @RequestMapping("/address")

@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import br.com.alexandrenavarro.ns.model.Address;
 
-@Component
+@Repository
 public class AddressDAO {
 
 	private Map<Integer, Address> addresses = new HashMap<Integer, Address>();
